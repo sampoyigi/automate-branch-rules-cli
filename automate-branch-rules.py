@@ -14,6 +14,9 @@ def add_all(pat):
     """Add all function."""
     print("")
     for repo in git.get_organization(org_name).get_repos():
+        if repo.archived:
+            print("Archived Repository: ", repo.name)
+            continue
         for branch_name in branches:
             try:
                 repo.get_branch(branch_name)
